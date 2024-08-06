@@ -1,0 +1,126 @@
+
+@font-face {
+
+    /* specify font family here */
+    font-family: 'CinzelBlack';
+    /* make sure to paste font file in src folder */
+    src: url('./Cinzel-Black.ttf') format('truetype');
+    /* url('./my-font.woff') format('woff'); */
+    font-weight: 400;
+    font-style: normal;
+}
+
+
+@font-face {
+
+    /* specify font family here */
+    font-family: 'CinzelBold';
+    /* make sure to paste font file in src folder */
+    src: url('./Cinzel-Bold.ttf') format('truetype');
+    /* url('./my-font.woff') format('woff'); */
+    font-weight: 400;
+    font-style: normal;
+}
+@font-face {
+
+    /* specify font family here */
+    font-family: 'CinzelExtraBold';
+    /* make sure to paste font file in src folder */
+    src: url('./Cinzel-ExtraBold.ttf') format('truetype');
+    /* url('./my-font.woff') format('woff'); */
+    font-weight: 400;
+    font-style: normal;
+}
+@font-face {
+
+    /* specify font family here */
+    font-family: 'CinzelMedium';
+    /* make sure to paste font file in src folder */
+    src: url('./Cinzel-Medium.ttf') format('truetype');
+    /* url('./my-font.woff') format('woff'); */
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    /* specify font family here */
+    font-family: 'CinzelRegular';
+    /* make sure to paste font file in src folder */
+    src: url('./Cinzel-Regular.ttf') format('truetype');
+    /* url('./my-font.woff') format('woff'); */
+    font-weight: 400;
+    font-style: normal;
+}
+@font-face {
+    /* specify font family here */
+    font-family: 'CinzelSemiBold';
+    /* make sure to paste font file in src folder */
+    src: url('./Cinzel-SemiBold.ttf') format('truetype');
+    /* url('./my-font.woff') format('woff'); */
+    font-weight: 400;
+    font-style: normal;
+}
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    /* border: 1px solid whitesmoke; */
+}
+
+
+.main-container {
+    display: flex;
+    flex: 1;
+
+}
+img[alt*="home background"]{
+    object-fit: contain;
+    height: 100%;
+    width: 100%;
+}
+
+
+.logo-img-cont {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    /* border: 1px solid white; */
+}
+img[alt*="logo"]{
+    object-fit: contain;
+    width: 150px;
+    margin-top: 8px;
+    /* border: 1px solid white; */
+}
+
+.logo-sub-txt {
+    color: white;
+    /* text-align: center; */
+    margin-left: 5px;
+    font-size: 10px;
+    font-family: "CinzelMedium";
+}
+
+.home-background-img-cont {
+    display: flex;
+}
+.header {
+    background-color: maroon;
+    padding: 10px 20px 10px 20px;
+}
+
+.logo-text {
+    /* color: red; */
+    color: white;
+}
+
+.img-main-txt  {
+    position: absolute;
+    color: white;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    font-size: 2rem;
+    top: 150px;
+    left: 20px;
+
+}
+
