@@ -1,4 +1,6 @@
 
+
+
 @font-face {
 
     /* specify font family here */
@@ -9,7 +11,6 @@
     font-weight: 400;
     font-style: normal;
 }
-
 
 @font-face {
 
@@ -60,6 +61,13 @@
     font-weight: 400;
     font-style: normal;
 }
+
+body {
+    background-image: url('./pattern_bg.jpg');
+    background-size: contain;
+    
+}
+
 * {
     box-sizing: border-box;
     padding: 0;
@@ -67,31 +75,157 @@
     /* border: 1px solid whitesmoke; */
 }
 
-
-.main-container {
-    display: flex;
-    flex: 1;
-
+:root {
+    --beige: #fffde7;
+    --maroon: maroon;
 }
+
+/* IMAGES */
+
+img[alt*="siomai background"]{
+    object-fit: contain;
+    height: 100%;
+    width: 100%;
+    /* padding: 0px 30px 0px 30px; */
+    /* background-color: #fffde7;; */
+
+    /* background-color: maroon; */
+    /* border-radius: 5px; */
+}
+img[alt*="promo-1"]{
+    object-fit: contain;
+    height: 100%;
+    width: 100%;
+    /* padding: 30px 30px 30px 30px; */
+    /* background-color: #fffde7;; */
+    background-color: maroon;
+    border-radius: 3px;
+}
+
+
 img[alt*="home background"]{
     object-fit: contain;
     height: 100%;
     width: 100%;
+    /* padding: 30px 30px 30px 30px; */
+    /* background-color: #fffde7;; */
+    background-color: maroon;
+    border-radius: 3px;
 }
 
-
-.logo-img-cont {
-    display: flex;
-    flex-direction: column;
-    width: 40%;
-    /* border: 1px solid white; */
-}
 img[alt*="logo"]{
     object-fit: contain;
     width: 150px;
     margin-top: 8px;
     /* border: 1px solid white; */
 }
+
+img[alt*="drawer"]{
+    height: 25px;
+    width: 25px;
+    /* border: 1px solid white; */
+}
+
+img[alt*="drawer"]:hover{
+    transform: scale(1.2);
+}
+
+/* CONTAINERS  */
+
+
+.home-background-img-cont {
+    flex-direction: column;
+    display: flex;
+    /* padding: 0px 30px 0px 30px; */
+    /* background-color: maroon; */
+}
+.main-container {
+    display: flex;
+    flex: 1;
+
+}
+.logo-img-cont {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    /* border: 1px solid white; */
+}
+
+.hook-container {
+    /* display: flex; */
+    background-color: none;
+    position: relative;
+    /* flex-direction: column; */
+    padding: 50px 30px 50px 30px;
+    /* row-gap: 15px; */
+}
+
+
+/* HOOK CONTAINER */
+
+.siomai-bg-img-cont {
+    position: relative;
+    /* background-color: maroon; */
+    /* display: flex; */
+}
+
+.hook-pos {
+    position: absolute;
+    top: 5px;
+    left: 10px;
+
+}
+
+
+.main-hook-text {
+    font-family: "CinzelRegular";
+    /* color: maroon; */
+    /* color: black; */
+    color: white;
+    font-size: 14px;
+}
+
+.product-hook-text {
+    margin-top: 8px;
+    font-family: "CinzelSemiBold";
+    /* color: maroon; */
+    color: white;
+    font-size: 36px;
+    /* inline-size: 1clm; */
+
+    line-height: 1;
+    
+}
+
+/* BUTTONS */
+
+.button-template {
+    background: none;
+    height: 35px;
+    border-radius: 3px;
+    font-size: 12px;
+    font-family: "CinzelSemiBold";
+    color: white;
+    width: 120px;
+    border: none;
+    background-color: maroon;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    /* border-width: 2px; */
+    /* border-color: ; */
+    
+}
+
+.button-template:hover {
+    cursor: pointer ;
+    background-color: rgb(102, 0, 0);
+}
+
+#order-now {
+    margin-top: 20px;
+    
+}
+
+
 
 .logo-sub-txt {
     color: white;
@@ -101,22 +235,30 @@ img[alt*="logo"]{
     font-family: "CinzelMedium";
 }
 
-.home-background-img-cont {
-    display: flex;
-}
+
+
+/* HEADER */
 .header {
-    background-color: maroon;
+    justify-content: space-between;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    /* background-color: maroon; */
     padding: 10px 20px 10px 20px;
 }
+
+
 
 .logo-text {
     /* color: red; */
     color: white;
 }
 
+
+
 .img-main-txt  {
-    position: absolute;
-    color: white;
+    /* position: absolute; */
+    color: maroon;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     font-size: 2rem;
     top: 150px;
@@ -124,3 +266,64 @@ img[alt*="logo"]{
 
 }
 
+/* flex properties */
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.flex-row {
+    display: flex;
+    flex-direction: row;
+}
+
+/* PROMO SECTION */
+
+.home-img-cont {
+    padding: 30px;
+    /* background-color: ; */
+    /* position: relative; */
+
+}
+
+.special-promo-cont {
+    font-size: 24px;
+    text-align: center;
+    color: var(--beige);
+}
+
+.promo-header-text {
+    
+    font-family: "CinzelSemiBold";
+    margin-bottom: 10px;
+}
+
+
+.promo-sub-text {
+    padding-top: 10px;
+    font-family: "CinzelMedium";
+    /* color: var(--beige); */
+    font-size: 20px;
+    
+}
+
+
+.special-promo-cont {
+    /* position: absolute; */
+    left: 0;
+    right: 0;
+    margin-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 300px;
+    bottom: 1px;
+    padding: 10px 20px 10px 20px;
+    border-radius: 3px;
+    /* height: 150px; */
+    background-color: maroon;
+box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    /* border: 5px solid maroon; */
+    flex: 1;
+
+}
