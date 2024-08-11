@@ -5,19 +5,66 @@ import menu from "./menu_icon.svg"
 import siomai from "./siomai4.jpg"
 import ricewdrink_dinein from "./wricedrink_dinein.jpg"
 
-const mainContent = () => {
+// const mainContent = () => {
     
     // contains main content of the page
     // gets altered within tab change
-    const element = document.createElement("div");
-    // element.innerHTML = 'Restaurant Page'
-    element.classList.add('main-content')
-    element.setAttribute("id", 'content')
 
-    return element
+
+const contentSideBarWrapper = document.createElement("div")
+contentSideBarWrapper.classList = 'content-side-bar-wrapper'
+const mainContent = document.createElement("div");
+    // element.innerHTML = 'Restaurant Page'
+    //
+const sideBarNav = () => {
+    // side bar navigation
+    const sideBarNav = document.createElement("div")
+    sideBarNav.classList = 'flex-column side-bar-container'
+    const navElement = document.createElement('nav');
+    navElement.classList = 'flex-column'
+    sideBarNav.appendChild(navElement)
+
+    const homeBtn = document.createElement('a')
+    const menuBtn = document.createElement('a')
+    const contactBtn = document.createElement('a')
+
+    // add href links
+    navElement.appendChild(homeBtn);
+    navElement.appendChild(menuBtn);
+    navElement.appendChild(contactBtn);
+
+    return sideBarNav
+}
+
+
+
+
+
+mainContent.classList.add('main-content') 
+mainContent.setAttribute("id", 'content')
+
+contentSideBarWrapper.appendChild(mainContent)
+    // return element
+// }
+
+const footer = () => {
+    const footer = document.createElement('footer')
+    const textWrapper = document.createElement('div');
+    textWrapper.classList = 'flex-column footer-text-wrapper'
+    const text = document.createElement('p');
+    text.classList = 'footer-text'
+    text.innerHTML = 'dakkeas'
+    footer.appendChild(textWrapper)
+    textWrapper.appendChild(text)
+    
+    return footer
+    
 }
 
 const header = () => {
+    // const mainContent = document.querySelector("#content")
+    // console.log(mainContent)
+    
     
     const header = document.createElement('header') ;
     header.classList.add('header')
@@ -47,7 +94,22 @@ const header = () => {
     header.appendChild(logoImgContainer)
     header.appendChild(logoText)
     header.appendChild(drawerButton);
+    
+    drawerButton.addEventListener('click', () => {
+        const sideBar = document.querySelector(".side-bar-container")
+        const hookTextWrapper = document.querySelector('#hook-pos');
+        sideBar.classList.toggle('visible');
+        // hookTextWrapper.style.transform = "scale(0.8)"
+        console.log("Drawer has been clicked!")
+        
 
+        
+        
+
+    })
+    
+    
+    
     return header
 }
 
@@ -66,7 +128,7 @@ const homePage = () => {
 
     // main bg image
     const homeImgContainer = document.createElement('div');
-    homeImgContainer.classList = 'home-img-cont'
+    homeImgContainer.classList = 'home-img-cont flex-column'
     
     const homeBackgroundImg = new Image();
     homeBackgroundImg.src = mainImage
@@ -79,12 +141,14 @@ const homePage = () => {
 
 
     // 
+    homeImgContainer.appendChild(mainHookText2)
     homeImgContainer.appendChild(homeBackgroundImg)
     
     
     // image main text
     const hookPosition = document.createElement('div');
-    hookPosition.classList = 'hook-pos'
+    hookPosition.setAttribute('id', "hook-pos")
+
 
     const hookContainer = document.createElement('div');
     hookContainer.classList.add("hook-container")
@@ -146,7 +210,7 @@ const homePage = () => {
 
     promoSubText.classList.add('promo-sub-text')
     
-    promoSubText.innerHTML = 'ADD P25 FOR RICE AND DRINK'
+    promoSubText.innerHTML = 'ADD P20 FOR RICE AND DRINK'
     
     // imageMainText.innerHTML = 'Ang Hari ng Siomai'
     
@@ -173,12 +237,18 @@ const homePage = () => {
     mainContent.appendChild(homeBackgroundImgContainer)
 }
 
+
+
+
+
 let pageToShow = 'home'
 
 
 
 document.body.appendChild(header())
-document.body.appendChild(mainContent())
+document.body.appendChild(contentSideBarWrapper)
+contentSideBarWrapper.appendChild(sideBarNav())
+document.body.appendChild(footer())
 
 switch (pageToShow) {
     case "home":

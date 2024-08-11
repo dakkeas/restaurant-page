@@ -1,6 +1,5 @@
 
 
-
 @font-face {
 
     /* specify font family here */
@@ -65,9 +64,10 @@
 body {
     background-image: url('./pattern_bg.jpg');
     background-size: contain;
-    
+    position: relative;
+    padding-bottom: 1rem;
+    min-height: 100vh;
 }
-
 * {
     box-sizing: border-box;
     padding: 0;
@@ -132,6 +132,10 @@ img[alt*="drawer"]:hover{
 
 /* CONTAINERS  */
 
+.main-content {
+    flex: 1;
+    transition: margin-right 0.5s;
+}
 
 .home-background-img-cont {
     flex-direction: column;
@@ -169,7 +173,7 @@ img[alt*="drawer"]:hover{
     /* display: flex; */
 }
 
-.hook-pos {
+#hook-pos {
     position: absolute;
     top: 5px;
     left: 10px;
@@ -192,6 +196,7 @@ img[alt*="drawer"]:hover{
     color: white;
     font-size: 36px;
     /* inline-size: 1clm; */
+    
 
     line-height: 1;
     
@@ -239,6 +244,7 @@ img[alt*="drawer"]:hover{
 
 /* HEADER */
 .header {
+    transition: margin-left 0.5s;
     justify-content: space-between;
     align-items: center;
     display: flex;
@@ -281,6 +287,7 @@ img[alt*="drawer"]:hover{
 /* PROMO SECTION */
 
 .home-img-cont {
+    row-gap: 15px;
     padding: 30px;
     /* background-color: ; */
     /* position: relative; */
@@ -327,3 +334,68 @@ box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30p
     flex: 1;
 
 }
+
+/* footer */
+
+footer {
+    bottom: 0   ;
+    z-index: 10;
+    position: absolute;
+    width: 100%;
+    height: 2rem;
+    background-color: black;
+}
+
+.footer-text-wrapper {
+    justify-content: center;
+    align-items: center;
+    height: 100%
+}
+
+
+.footer-text {
+    text-align: center;
+    font-family: 'CinzelRegular';
+    font-size: 12px;
+    color: var(--beige)
+    
+}
+
+
+
+.main-hook-text-2 {
+    line-height: 1;
+
+    font-size: 36px;
+    color: white;
+    font-family: 'CinzelRegular';
+
+    
+}
+
+
+/* side bar navigation */
+.content-side-bar-wrapper {
+overflow-x: hidden;
+    display: flex;
+    flex-wrap: nowrap;
+    border: 1px solid green;
+    align-items: stretch;
+}
+
+.side-bar-container {
+    position: relative;
+    width: 800px;
+    background-color: black;
+    margin-right: -800px;
+
+}
+
+.visible {
+    margin-right: 0px;
+}
+
+nav {
+    
+}
+
