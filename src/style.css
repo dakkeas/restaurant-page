@@ -126,6 +126,15 @@ img[alt*="drawer"]{
     /* border: 1px solid white; */
 }
 
+img[alt*="close"]{
+    height: 25px;
+    width: 25px;
+    position: absolute;
+    
+    right: 20px;
+    top: 20px;
+    /* border: 1px solid white; */
+}
 img[alt*="drawer"]:hover{
     transform: scale(1.2);
 }
@@ -134,10 +143,10 @@ img[alt*="drawer"]:hover{
 
 .main-content {
     flex: 1;
-    transition: margin-right 0.5s;
+    transition: margin 0.5s;
 }
 
-.home-background-img-cont {
+.home-bg-cont-2 {
     flex-direction: column;
     display: flex;
     /* padding: 0px 30px 0px 30px; */
@@ -167,7 +176,7 @@ img[alt*="drawer"]:hover{
 
 /* HOOK CONTAINER */
 
-.siomai-bg-img-cont {
+.home-bg-cont-1 {
     position: relative;
     /* background-color: maroon; */
     /* display: flex; */
@@ -285,6 +294,13 @@ img[alt*="drawer"]:hover{
 }
 
 /* PROMO SECTION */
+.home-bg-cont-3 {
+    row-gap: 15px;
+    padding: 30px;
+    /* background-color: ; */
+    /* position: relative; */
+
+}
 
 .home-img-cont {
     row-gap: 15px;
@@ -384,18 +400,40 @@ overflow-x: hidden;
 }
 
 .side-bar-container {
-    position: relative;
-    width: 800px;
+    height: 100%;
+    transition: 0.5s;
+    position: fixed;
+    /* stays in place */
+    z-index: 1;
+    /* stays on top */
+    width: 0px;
     background-color: black;
-    margin-right: -800px;
-
+    overflow-x: hidden;
+    /* remove horizontal scrolling */
+    border: 1px solid red;
 }
 
-.visible {
+.visible{
+    /* removes margin-right negative */
     margin-right: 0px;
 }
 
-nav {
-    
+
+.hook-text-wrapper-reposition {
+    transition: 0.5s;
+    /* transform: scale(0.7); */
+    bottom: 350px;
 }
 
+nav {
+    padding: 30px;
+}
+
+
+
+
+a {
+    color: white;
+    font-family: "CinzelRegular";
+    font-size: 24px;
+}
