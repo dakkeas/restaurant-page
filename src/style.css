@@ -67,6 +67,19 @@ body {
     position: relative;
     padding-bottom: 1rem;
     min-height: 100vh;
+    
+}
+
+@keyframes blur {
+    50% {
+        filter: blue(2px);
+    }
+}
+
+.fade {
+    /* background-color: rgb(0,0,0,0.5) */
+    filter: blur(2px) ;
+    
 }
 * {
     box-sizing: border-box;
@@ -126,24 +139,39 @@ img[alt*="drawer"]{
     /* border: 1px solid white; */
 }
 
+img[alt*="drawer"]:active {
+    transform: scale(0.8);
+    transition: 0.2s;
+}
+img[alt*="close"]:active {
+    transform: scale(0.8);
+    transition: 0.2s;
+}
+
 img[alt*="close"]{
+    /* flex: 1; */
+    /* background-color: yellow; */
     height: 25px;
     width: 25px;
-    position: absolute;
-    
+    /* position: absolute; */
     right: 20px;
     top: 20px;
-    /* border: 1px solid white; */
+    /* border:k 1px solid white; */
 }
 img[alt*="drawer"]:hover{
-    transform: scale(1.2);
+    /* transform: scale(1.2); */
 }
 
 /* CONTAINERS  */
 
 .main-content {
     flex: 1;
-    transition: margin 0.5s;
+    transition: margin 0.2s;
+    transition: filter 0.2s;
+}
+
+#header {
+    transition: filter 0.2s;
 }
 
 .home-bg-cont-2 {
@@ -253,7 +281,7 @@ img[alt*="drawer"]:hover{
 
 /* HEADER */
 .header {
-    transition: margin-left 0.5s;
+    transition: margin-left 0.2s;
     justify-content: space-between;
     align-items: center;
     display: flex;
@@ -390,7 +418,7 @@ footer {
 }
 
 
-/* side bar navigation */
+/* sidebar navigation */
 .content-side-bar-wrapper {
 overflow-x: hidden;
     display: flex;
@@ -399,7 +427,19 @@ overflow-x: hidden;
     align-items: stretch;
 }
 
+
+.close-drawer-btn-container {
+    padding: 20px 20px 0px 0px;
+    display: flex;
+    /* background-color: yellow; */
+    align-self: flex-end;
+
+    /* padding: 20px 30px 0px 30px; */
+}
+
 .side-bar-container {
+    /* padding: 20px 30px 0px 30px; */
+    filter: unset;
     height: 100%;
     transition: 0.5s;
     position: fixed;
@@ -410,7 +450,9 @@ overflow-x: hidden;
     background-color: black;
     overflow-x: hidden;
     /* remove horizontal scrolling */
-    border: 1px solid red;
+    /* border: 1px solid red; */
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    right:-1px;
 }
 
 .visible{
@@ -426,7 +468,9 @@ overflow-x: hidden;
 }
 
 nav {
-    padding: 30px;
+    /* padding: 30px; */
+    padding: 10px 30px 0px 30px;
+    /* border: 1px solid red; */
 }
 
 
@@ -436,4 +480,16 @@ a {
     color: white;
     font-family: "CinzelRegular";
     font-size: 24px;
+}
+
+a:active {
+    
+    transform: scale(0.8);
+    transition: 0.2s;
+    color: rgb(143, 143, 143);
+}
+    
+
+.not-visible {
+    display: none;
 }

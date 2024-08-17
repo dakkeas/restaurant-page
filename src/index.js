@@ -7,6 +7,7 @@ import ricewdrink_dinein from "./wricedrink_dinein.jpg"
 import closeIcon from "./close.svg"
 
 
+
 const mainContent = document.createElement("div");
 mainContent.classList.add('main-content')
 mainContent.setAttribute("id", 'content')
@@ -17,15 +18,19 @@ const openNav = () => {
     const sideBar = document.querySelector('#side-bar')
     
     // show side bar 
-    sideBar.style.width = "250px"
+    sideBar.style.width = "200px"
     // add darkness to background
-    document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+    
+    document.querySelector('#content').classList.toggle('fade')
+    document.querySelector('#header').classList.toggle('fade')
     
 }
 
 const closeNav = () => {
     console.log('close navigation .....')
     document.querySelector('#side-bar').style.width = '0px'
+    document.querySelector('#content').classList.toggle('fade')
+    document.querySelector('#header').classList.toggle('fade')
 }
 
 
@@ -45,11 +50,14 @@ const sideBarNav = () => {
     navElement.classList = 'flex-column'
     
     // close button element
+    const closeDrawerBtnContainer = document.createElement("div");
+    closeDrawerBtnContainer.classList = 'close-drawer-btn-container'
     const closeDrawerBtn = new Image();
     closeDrawerBtn.src = closeIcon
     closeDrawerBtn.setAttribute("alt", "close");
     
-    sideBarNav.appendChild(closeDrawerBtn)
+    closeDrawerBtnContainer.appendChild(closeDrawerBtn);
+    sideBarNav.appendChild(closeDrawerBtnContainer);
 
     
     // navigation links; href
@@ -61,19 +69,85 @@ const sideBarNav = () => {
     menuBtn.innerHTML = 'Menu'
     contactBtn.innerHTML = 'Contact'
 
+    // hide initial screens first on startup
+
+    const homePage = document.querySelector('#home')
+    const contactPage = document.querySelector('#contact')
+    const menuPage = document.querySelector('#menu')
+    // on click, refresh 
+    // on click of a nav button, we check if we're at that page
+    // if not, then we remove contents on the screen
+    // we add the contents of that page
+
+    // toggle function, if you call it, it adds the class. 
+    // calling it again if the class has been added, it will remove it!
+
     homeBtn.onclick = function () { 
-        console.log('click!')
-        pageToShow = 'Home'
+        if (document.querySelector('#home').classList.contains('not-visible')) {
+            // if it is not visible 
+            console.log('navigating to home page .....')
+            
+            // set other screens to hidden by toggling visibility!
+            // if a screen already contains a not visible class, then leave it, else add it
+            document.querySelector("#menu").classList.contains('not-visible') 
+            ? null : document.querySelector('#menu').classList.toggle('not-visible')
+            
+            
+            document.querySelector("#contact").classList.contains('not-visible') 
+            ? null : document.querySelector('#contact').classList.toggle('not-visible')
+
+        
+            document.querySelector('#home').classList.toggle("not-visible")
+        }
+        closeNav()
+
+        
+
     };
     menuBtn.onclick = function () { 
-        console.log('click!')
-        pageToShow = 'Menu'
+
+        console.log('navigating to menu page .....')
+
+        if (document.querySelector('#menu').classList.contains('not-visible')) {
+            console.log('navigating to home page .....')
+            // if currently not on this page
+            
+            
+            // if a screen already contains a not visible class, then leave it, else add it
+            document.querySelector("#home").classList.contains('not-visible') 
+            ? null : document.querySelector('#home').classList.toggle('not-visible')
+
+            
+            document.querySelector("#contact").classList.contains('not-visible') 
+            ? null : document.querySelector('#contact').classList.toggle('not-visible')
+
+            document.querySelector('#menu').classList.toggle("not-visible")
+        }
+        closeNav()
     };
         
     contactBtn.onclick = function () { 
-        console.log('click!')
-        pageToShow = 'Contact'
+
+        console.log('navigating to contact page .....')
+        
+        
+        if (document.querySelector('#contact').classList.contains('not-visible')) {
+            console.log('navigating to home page .....')
+            // if currently not on this page
+            
+            // if a screen already contains a not visible class, then leave it, else add it
+            document.querySelector("#menu").classList.contains('not-visible') 
+            ? null : document.querySelector('#menu').classList.toggle('not-visible')
+            
+            
+            document.querySelector("#home").classList.contains('not-visible') 
+            ? null : document.querySelector('#home').classList.toggle('not-visible')
+            
+            document.querySelector('#contact').classList.toggle("not-visible")
+        }
+        closeNav()
     };
+            
     
     navElement.appendChild(homeBtn);
     navElement.appendChild(menuBtn);
@@ -114,6 +188,7 @@ const header = () => {
     
     const header = document.createElement('header') ;
     header.classList.add('header')
+    header.setAttribute('id', 'header')
     
     // container for logo 
     const logoImgContainer = document.createElement('div');
@@ -258,26 +333,79 @@ const homePage = () => {
     specialPromoBoxContainer.appendChild(promoImg)
     specialPromoBoxContainer.appendChild(promoSubText)
     
-    // append all content to main content
-    mainContent.appendChild(homeContentContainer1)
-    mainContent.appendChild(homeContentContainer2)
-    mainContent.appendChild(homeContentContainer3)
+
+    // set main container for the home page (where child => content containers)
+    const homePage= document.createElement('div');
+    homePage.setAttribute('id', 'home');
+    
+    
+    
+    // // append all content to main content
+    
+    homePage.appendChild(homeContentContainer1)
+    homePage.appendChild(homeContentContainer2)
+    homePage.appendChild(homeContentContainer3)
+    
+
+    // add to main content whenever homepage() is called!
+    mainContent.appendChild(homePage)
+}
+
+
+const contactPage = () => {
+    const mainContent = document.querySelector('#content')
+
+    const contactPage = document.createElement('div');
+    contactPage.setAttribute('id', 'contact')
+    
+    const test_element = document.createElement('div');
+    test_element.innerHTML = 'This is the contact page'
+    
+    
+    contactPage.appendChild(test_element)
+    
+    mainContent.appendChild(contactPage);
+}
+
+
+const menuPage = () => {
+    const mainContent = document.querySelector('#content')
+    
+    const menuPage = document.createElement('div');
+
+    menuPage.setAttribute('id', "menu")
+    
+    const test_element = document.createElement('div');
+    test_element.innerHTML = 'This is the menu page'
+    
+    menuPage.appendChild(test_element)
+    mainContent.appendChild(menuPage)
+    
 }
 
 // changes depending on where the screen is 
 let pageToShow = 'home'
-
 // add main container elements to body 
 sideBarNav()
 document.body.appendChild(header())
 document.body.appendChild(mainContent)
 document.body.appendChild(footer())
 
+homePage()
+contactPage()
+menuPage()
+
+document.querySelector("#contact").classList.toggle('not-visible')
+
+document.querySelector("#menu").classList.toggle('not-visible')
+
+// document.querySelector("#home").classList.toggle('not-visible')
+
 switch (pageToShow) {
     case "home":
         console.log('screen to show is home!')
 
-        homePage()
+        // homePage()
         break
     
     case "menu":
