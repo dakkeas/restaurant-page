@@ -5,7 +5,19 @@ import menu from "./menu_icon.svg"
 import siomai from "./siomai4.jpg"
 import ricewdrink_dinein from "./wricedrink_dinein.jpg"
 import closeIcon from "./close.svg"
+// siopao images 
+import asadoSiopao from "./menu/asado.png";
+import bolaBolaSiopao from "./menu/bola_bola.png";
+import chickenSiopao from "./menu/chicken.png";
+import spicyAsadoSiopao from "./menu/spicy_asado.png";
+import combiSiopao from "./menu/combi.png"
 
+// shanghai images
+
+import japaneseSiomai from "./menu/japanese_siomai.jpg"
+import shanghaiSiomai from "./menu/shanghai_siomai.jpg"
+import hongkongSiomai from "./menu/hongkong_siomai.jpg"
+import chickenSiomai from "./menu/chicken_siomai.png"
 
 
 const mainContent = document.createElement("div");
@@ -367,20 +379,150 @@ const contactPage = () => {
     mainContent.appendChild(contactPage);
 }
 
+function capitalizeFirstLetters(string) {
+    let splitArray = string.split(' ')
+    let upperCase = []
+    splitArray.forEach(element=> {
+        upperCase.push(element[0].toUpperCase() + element.substring(1))
+    })
+    
+    return upperCase.join(' ')
+    
+}
 
 const menuPage = () => {
     const mainContent = document.querySelector('#content')
     
-    const menuPage = document.createElement('div');
+    // menu page main container
+    const menuPage= document.createElement('div');
 
     menuPage.setAttribute('id', "menu")
     
-    const test_element = document.createElement('div');
-    test_element.innerHTML = 'This is the menu page'
+    // content container 1
+    const menuContentContainer1 = document.createElement("div");
+    menuContentContainer1.classList = 'menu-bg-cont-1' 
     
-    menuPage.appendChild(test_element)
+    const siomaiMenuTitleWrapper = document.createElement('div');
+    siomaiMenuTitleWrapper.classList = 'siomai-menu-title-wrapper'
+    const siomaiMenuText = document.createElement('p');
+    siomaiMenuText.innerHTML = 'Menu'
+    siomaiMenuText.classList = 'siomai-menu-text'
+    siomaiMenuText.style.fontFamily = 'CinzelBold'
+    siomaiMenuText.style.textShadow = '2px 2px #ff0000;'
+
+    siomaiMenuTitleWrapper.appendChild(siomaiMenuText)
+    
+
+    
+    const siopaoMenuTitleWrapper = document.createElement('div');
+    const siopaoMenuText = document.createElement('p');
+    siopaoMenuText.innerHTML = 'Siopao'
+    
+    // wrapper for text of main title
+    // const menuTitleTextWrapper = document.createElement("div");
+    // menuTitleTextWrapper.classList = 'menu-title-text-wrapper'
+
+    // title
+    // const menuTitleText = document.createElement('p');
+    // menuTitleText.innerHTML = 'Our Menu'
+    // menuTitleText.classList = 'menu-title-text'
+
+    // append them to main content 1 
+    menuContentContainer1.appendChild(siomaiMenuTitleWrapper)
+    
+
+    const menuContainerSiomai = document.createElement("div");
+    menuContainerSiomai.classList = 'menu-siomai-container'
+    
+
+    const shanghaiSiomaiImg = new Image();
+    shanghaiSiomaiImg.src = shanghaiSiomai
+    shanghaiSiomaiImg.setAttribute("alt", "shanghai siomai");
+    const japaneseSiomaiImg = new Image();
+    japaneseSiomaiImg.src = japaneseSiomai
+    japaneseSiomaiImg.setAttribute("alt", "japanese siomai");
+    const hongkongSiomaiImg = new Image();
+    hongkongSiomaiImg.src = hongkongSiomai
+    hongkongSiomaiImg.setAttribute("alt", "hongkong siomai");
+    const chickenSiomaiImg = new Image();
+    chickenSiomaiImg.src = chickenSiomai
+    chickenSiomaiImg.setAttribute("alt", "chicken siomai");
+
+    const asadoSiopaoImg = new Image();
+    asadoSiopaoImg.src = asadoSiopao
+    asadoSiopaoImg.setAttribute("alt", "asado siopao");
+    const bolaBolaSiopaoImg = new Image();
+    bolaBolaSiopaoImg.src = bolaBolaSiopao
+    bolaBolaSiopaoImg.setAttribute("alt", "bola bola siopao");
+    const chickenSiopaoImg = new Image();
+    chickenSiopaoImg.src = chickenSiomai
+    chickenSiopaoImg.setAttribute("alt", "chicken siopao");
+    const spicyAsadoSiopaoImg = new Image();
+    spicyAsadoSiopaoImg.src = spicyAsadoSiopao
+    spicyAsadoSiopaoImg.setAttribute("alt", "spicy asado siopao");
+    const combiSiopaoImg = new Image();
+    combiSiopaoImg.src = combiSiopao
+    combiSiopaoImg.setAttribute("alt", "combi asado");
+    
+    
+    
+    [shanghaiSiomaiImg, japaneseSiomaiImg, hongkongSiomaiImg, chickenSiomaiImg, 
+        asadoSiopaoImg, bolaBolaSiopaoImg, chickenSiopaoImg, spicyAsadoSiopaoImg, combiSiopaoImg].forEach(element => {
+        // make a wrapper
+
+        element.style.height = '150px'
+        element.style.borderRadius = '3px'
+        const menuImageWrapper = document.createElement('div');
+        // append image inside wrapper
+        menuImageWrapper.appendChild(element)
+        // set id of each wrapper as alt of image
+        menuImageWrapper.setAttribute('id', `${element.alt}`)
+        menuImageWrapper.classList = 'menu-img-wrapper'
+        // console.log(`${element.alt}`)
+        const nameText = document.createElement('p');
+        nameText.classList = 'menu-name-text'
+        nameText.innerHTML = `${capitalizeFirstLetters(element.alt)}`
+        nameText.style.textAlign = 'center'
+        nameText.style.fontSize = '11px'
+        nameText.style.fontFamily = 'CinzelSemiBold'
+            
+
+        const priceText = document.createElement('p');
+        
+        const orderText = document.createElement('p')
+        orderText.classList = 'menu-order-text'
+        orderText.innerHTML = 'Order Now'
+        orderText.style.color = 'maroon';
+        orderText.style.fontSize = '10px'
+        orderText.style.textAlign = 'center'
+        orderText.style.fontFamily = 'CinzelSemiBold'
+        orderText.style.paddingBottom = '5px'
+        
+            
+        menuImageWrapper.addEventListener('mouseover', (event) => {
+            nameText.style.color = 'maroon'
+            
+            
+        })
+
+        menuImageWrapper.addEventListener('mouseleave', (event) => {
+            nameText.style.color = 'black'
+            
+        })
+
+        
+        menuImageWrapper.appendChild(nameText);
+        menuImageWrapper.appendChild(orderText);
+
+        menuContainerSiomai.appendChild(menuImageWrapper)
+    });
+
+    
+
+
+    menuContentContainer1.appendChild(menuContainerSiomai)
+    menuPage.appendChild(menuContentContainer1)    
     mainContent.appendChild(menuPage)
-    
 }
 
 // changes depending on where the screen is 
@@ -397,7 +539,8 @@ menuPage()
 
 document.querySelector("#contact").classList.toggle('not-visible')
 
-document.querySelector("#menu").classList.toggle('not-visible')
+document.querySelector("#home").classList.toggle('not-visible')
+// MODIFY TO DISPLAY ON FIRST LOAD
 
 // document.querySelector("#home").classList.toggle('not-visible')
 
@@ -416,5 +559,6 @@ switch (pageToShow) {
         console.log('screen to show is home!')
         break
 }
+
 
 

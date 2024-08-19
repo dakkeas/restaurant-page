@@ -18,8 +18,9 @@ module.exports = {
         //  will generate its own index.html file, even though we already have one in 
         // the dist/ folder.This means that it will replace our index.html file with a newly generated one.
         new HtmlWebpackPlugin({
-            title: 'Restaurant Page',
-
+            title: 'Siomai King San Miguel',
+            filename: "index.html",
+            chucks: ['index'],
         }),
 
         new NodePolyfillPlugin()

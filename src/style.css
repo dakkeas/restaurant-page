@@ -143,6 +143,10 @@ img[alt*="drawer"]:active {
     transform: scale(0.8);
     transition: 0.2s;
 }
+
+img[alt*="drawer"]:hover {
+    cursor: pointer;
+}
 img[alt*="close"]:active {
     transform: scale(0.8);
     transition: 0.2s;
@@ -158,9 +162,12 @@ img[alt*="close"]{
     top: 20px;
     /* border:k 1px solid white; */
 }
-img[alt*="drawer"]:hover{
-    /* transform: scale(1.2); */
+
+
+img[alt*="close"]{
+    cursor: ;
 }
+
 
 /* CONTAINERS  */
 
@@ -488,8 +495,58 @@ a:active {
     transition: 0.2s;
     color: rgb(143, 143, 143);
 }
+
+a:hover {
+    cursor: pointer;
+}
+
     
 
 .not-visible {
     display: none;
+}
+
+
+/* MENU */
+
+.menu-bg-cont-1 {
+    padding: 30px 20px 30px 20px;
+    background-image: url('./beige_pattern.jpg');
+    background-size: contain;
+    position: relative;
+}
+
+.siomai-menu-title-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.menu-img-wrapper {
+    background-color: white;
+    border-radius: 3px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.siomai-menu-text {
+    color: black;
+    font-size: 24px;
+}
+
+.menu-siomai-container{
+    margin-top: 20px;
+    justify-content: center;
+    align-items: center;
+    row-gap: 30px;
+    column-gap: 30px;
+    display: flex;
+    flex:1;
+    flex-wrap: wrap;
+}
+
+.menu-img-wrapper:hover {
+    cursor: pointer ;
+    transform: translateY(-5px) ;
+    /* transform: scale(1.02) ; */
+    transition: 0.2s;
 }
