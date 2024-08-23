@@ -406,8 +406,15 @@ footer {
 
 .footer-text {
     text-align: center;
+    font-family: 'CinzelSemiBold';
+    font-size: 10px;
+    color: var(--beige)
+    
+}
+.footer-sub-text {
+    text-align: center;
     font-family: 'CinzelRegular';
-    font-size: 12px;
+    font-size: 8px;
     color: var(--beige)
     
 }
@@ -513,10 +520,12 @@ a:hover {
     padding: 30px 20px 30px 20px;
     background-image: url('./beige_pattern.jpg');
     background-size: contain;
-    position: relative;
+    display: flex;
+    flex-direction: column;
+
 }
 
-.siomai-menu-title-wrapper {
+.menu-section-title-wrapper {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -533,7 +542,8 @@ a:hover {
     font-size: 24px;
 }
 
-.menu-siomai-container{
+.menu-siomai-container,
+.menu-siopao-container{
     margin-top: 20px;
     justify-content: center;
     align-items: center;

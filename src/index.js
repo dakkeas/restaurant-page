@@ -182,14 +182,18 @@ const footer = () => {
     const textWrapper = document.createElement('div');
     const footer = document.createElement('footer')
     const text = document.createElement('p');
+    const subText= document.createElement('p');
     textWrapper.classList = 'flex-column footer-text-wrapper'
 
     text.classList = 'footer-text'
-    text.innerHTML = 'dakkeas'
+    text.innerHTML = 'Siomai King'
+    subText.classList = 'footer-sub-text'
+    subText.innerHTML = 'San Miguel, Bulacan'
     
     // footer > div > p
     footer.appendChild(textWrapper)
     textWrapper.appendChild(text)
+    textWrapper.appendChild(subText)
     
     return footer
     
@@ -355,6 +359,9 @@ const homePage = () => {
     // // append all content to main content
     
     homePage.appendChild(homeContentContainer1)
+
+
+    // BUG FIX: Extra padding when rearranging cont 3 to position 2
     homePage.appendChild(homeContentContainer2)
     homePage.appendChild(homeContentContainer3)
     
@@ -390,6 +397,41 @@ function capitalizeFirstLetters(string) {
     
 }
 
+
+const priceTag = (price) => {
+    
+    const mainWrapper = document.createElement('div');
+    const border = document.createElement('div');
+    
+    border.style.border = '1px solid white'
+    border.style.padding = '3px'
+    mainWrapper.appendChild(border)
+    
+    
+    const priceText = document.createElement('p');
+    
+    priceText.innerHTML = '₱ ' + price 
+    priceText.style.color = "white";
+    priceText.style.fontSize = "10px";
+    priceText.style.fontFamily = "CinzelSemiBold";
+
+    border.appendChild(priceText)
+    
+    
+    mainWrapper.style.position = "absolute";
+    mainWrapper.style.backgroundColor = 'maroon';
+    mainWrapper.style.borderRadius = '3px';
+    mainWrapper.style.padding = '3px';
+    
+    mainWrapper.style.top = '10px'
+    mainWrapper.style.right = '10px'
+    mainWrapper.style.boxShadow = 'rgba(0, 0, 0, 0.35) 0px 5px 15px'
+
+
+    return mainWrapper
+
+}
+
 const menuPage = () => {
     const mainContent = document.querySelector('#content')
     
@@ -401,39 +443,34 @@ const menuPage = () => {
     // content container 1
     const menuContentContainer1 = document.createElement("div");
     menuContentContainer1.classList = 'menu-bg-cont-1' 
-    
-    const siomaiMenuTitleWrapper = document.createElement('div');
-    siomaiMenuTitleWrapper.classList = 'siomai-menu-title-wrapper'
-    const siomaiMenuText = document.createElement('p');
-    siomaiMenuText.innerHTML = 'Menu'
-    siomaiMenuText.classList = 'siomai-menu-text'
-    siomaiMenuText.style.fontFamily = 'CinzelBold'
-    siomaiMenuText.style.textShadow = '2px 2px #ff0000;'
 
-    siomaiMenuTitleWrapper.appendChild(siomaiMenuText)
-    
+    const menuSectionTitle = (title) => {
+        
+        const wrapper = document.createElement('div');
+        wrapper.classList = 'menu-section-title-wrapper'
+        const text = document.createElement('p');
+        text.innerHTML = title 
+        text.classList = 'siomai-menu-text'
+        text.style.fontFamily = 'CinzelBold'
+        text.style.textShadow = '2px 2px #ff0000;'
+        
+        wrapper.appendChild(text)
+        
+        return wrapper
+    }
 
-    
-    const siopaoMenuTitleWrapper = document.createElement('div');
-    const siopaoMenuText = document.createElement('p');
-    siopaoMenuText.innerHTML = 'Siopao'
-    
-    // wrapper for text of main title
-    // const menuTitleTextWrapper = document.createElement("div");
-    // menuTitleTextWrapper.classList = 'menu-title-text-wrapper'
-
-    // title
-    // const menuTitleText = document.createElement('p');
-    // menuTitleText.innerHTML = 'Our Menu'
-    // menuTitleText.classList = 'menu-title-text'
-
-    // append them to main content 1 
-    menuContentContainer1.appendChild(siomaiMenuTitleWrapper)
+    // add title
+    menuContentContainer1.appendChild(menuSectionTitle('Siomai'))
     
 
     const menuContainerSiomai = document.createElement("div");
     menuContainerSiomai.classList = 'menu-siomai-container'
+    menuContainerSiomai.style.marginBottom = '20px';
     
+
+    const menuContainerSiopao = document.createElement("div");
+    menuContainerSiopao.classList = 'menu-siopao-container'
+    menuContainerSiopao.style.marginBottom = '20px';
 
     const shanghaiSiomaiImg = new Image();
     shanghaiSiomaiImg.src = shanghaiSiomai
@@ -455,7 +492,7 @@ const menuPage = () => {
     bolaBolaSiopaoImg.src = bolaBolaSiopao
     bolaBolaSiopaoImg.setAttribute("alt", "bola bola siopao");
     const chickenSiopaoImg = new Image();
-    chickenSiopaoImg.src = chickenSiomai
+    chickenSiopaoImg.src = chickenSiopao
     chickenSiopaoImg.setAttribute("alt", "chicken siopao");
     const spicyAsadoSiopaoImg = new Image();
     spicyAsadoSiopaoImg.src = spicyAsadoSiopao
@@ -464,31 +501,27 @@ const menuPage = () => {
     combiSiopaoImg.src = combiSiopao
     combiSiopaoImg.setAttribute("alt", "combi asado");
     
-    
-    
-    [shanghaiSiomaiImg, japaneseSiomaiImg, hongkongSiomaiImg, chickenSiomaiImg, 
-        asadoSiopaoImg, bolaBolaSiopaoImg, chickenSiopaoImg, spicyAsadoSiopaoImg, combiSiopaoImg].forEach(element => {
-        // make a wrapper
-
-        element.style.height = '150px'
-        element.style.borderRadius = '3px'
+    const menuImageWrapper = (id) => {
         const menuImageWrapper = document.createElement('div');
-        // append image inside wrapper
-        menuImageWrapper.appendChild(element)
-        // set id of each wrapper as alt of image
-        menuImageWrapper.setAttribute('id', `${element.alt}`)
+        menuImageWrapper.setAttribute('id', `${id.alt}`)
         menuImageWrapper.classList = 'menu-img-wrapper'
-        // console.log(`${element.alt}`)
+        menuImageWrapper.style.position = 'relative'
+
+        return menuImageWrapper
+    }
+    
+    const nameText = (innerHTML) => {
         const nameText = document.createElement('p');
         nameText.classList = 'menu-name-text'
-        nameText.innerHTML = `${capitalizeFirstLetters(element.alt)}`
+        nameText.innerHTML = `${capitalizeFirstLetters(innerHTML.alt)}`
         nameText.style.textAlign = 'center'
         nameText.style.fontSize = '11px'
         nameText.style.fontFamily = 'CinzelSemiBold'
-            
 
-        const priceText = document.createElement('p');
-        
+        return nameText
+    }
+
+    const orderText = () => {
         const orderText = document.createElement('p')
         orderText.classList = 'menu-order-text'
         orderText.innerHTML = 'Order Now'
@@ -497,30 +530,81 @@ const menuPage = () => {
         orderText.style.textAlign = 'center'
         orderText.style.fontFamily = 'CinzelSemiBold'
         orderText.style.paddingBottom = '5px'
-        
+
+        return orderText
+    }
+
+    
+    [[shanghaiSiomaiImg, 1, 47], [japaneseSiomaiImg, 1, 56], [hongkongSiomaiImg, 1, 50], [chickenSiomaiImg, 1, 47], 
+        [asadoSiopaoImg, 2, 60], [bolaBolaSiopaoImg, 2, ], [chickenSiopaoImg, 2, ], [spicyAsadoSiopaoImg, 2], , [combiSiopaoImg, 2, ]].forEach(element => {
             
-        menuImageWrapper.addEventListener('mouseover', (event) => {
-            nameText.style.color = 'maroon'
+        element[0].style.height = '150px'
+        element[0].style.borderRadius = '3px'
+
+
+        const wrapper = menuImageWrapper(element[0])
+        wrapper.appendChild(element[0])
+        const name = nameText(element[0])
+
+            
+        wrapper.addEventListener('mouseover', (event) => {
+            name.style.color = 'maroon'
             
             
         })
 
-        menuImageWrapper.addEventListener('mouseleave', (event) => {
-            nameText.style.color = 'black'
+        wrapper.addEventListener('mouseleave', (event) => {
+            name.style.color = 'black'
             
         })
 
         
-        menuImageWrapper.appendChild(nameText);
-        menuImageWrapper.appendChild(orderText);
+        wrapper.appendChild(name);
+        wrapper.appendChild(orderText());
+        wrapper.appendChild(priceTag(element[2]))
 
-        menuContainerSiomai.appendChild(menuImageWrapper)
+        element[1] === 1 ? menuContainerSiomai.appendChild(wrapper) : menuContainerSiopao.appendChild(wrapper)
     });
 
     
 
 
     menuContentContainer1.appendChild(menuContainerSiomai)
+    menuContentContainer1.appendChild(menuSectionTitle('Siopao'))
+    menuContentContainer1.appendChild(menuContainerSiopao)
+    // [[shanghaiSiomaiImg], [japaneseSiomaiImg], [hongkongSiomaiImg], [chickenSiomaiImg],
+    // [asadoSiopaoImg], [bolaBolaSiopaoImg], [chickenSiopaoImg], [spicyAsadoSiopaoImg], [combiSiopaoImg]].forEach(element => {
+
+    //     element[0].style.height = '150px'
+    //     element[0].style.borderRadius = '3px'
+
+
+    //     const wrapper = menuImageWrapper(element[0])
+    //     wrapper.appendChild(element[0])
+    //     const name = nameText(element[0])
+
+
+    //     wrapper.addEventListener('mouseover', (event) => {
+    //         name.style.color = 'maroon'
+
+
+    //     })
+
+    //     wrapper.addEventListener('mouseleave', (event) => {
+    //         name.style.color = 'black'
+
+    //     })
+
+
+    //     wrapper.appendChild(name);
+    //     wrapper.appendChild(orderText());
+    //     wrapper.appendChild(priceTag())
+
+    //     menuContainerSiopao.appendChild(wrapper)
+    // });
+
+
+
     menuPage.appendChild(menuContentContainer1)    
     mainContent.appendChild(menuPage)
 }
