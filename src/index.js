@@ -339,6 +339,7 @@ const homePage = () => {
 
     mainHookText2.innerHTML = 'We serve fresh, everyday.'
     mainHookText2.classList.add('main-hook-text-2')
+    mainHookText2.style.textAlign = 'center'
 
 
     // append child elements of content 3
@@ -373,15 +374,120 @@ const homePage = () => {
 
 const contactPage = () => {
     const mainContent = document.querySelector('#content')
-
+    // content page
+    const contactContentContainer1 = document.createElement('div');
+    contactContentContainer1.classList = 'contact-bg-cont-1'
+    
     const contactPage = document.createElement('div');
     contactPage.setAttribute('id', 'contact')
+
+    // main flex wrapper  
+    const textMainWrapper = document.createElement('div');
+    textMainWrapper.style.display= 'flex';
+    textMainWrapper.style.flexDirection = 'column';
+    textMainWrapper.style.rowGap = '10px';
     
-    const test_element = document.createElement('div');
-    test_element.innerHTML = 'This is the contact page'
+    // wrapper left side for hours and location
+    const locationTextWrapper = document.createElement('div');
+
+    const titleText = document.createElement('p');
+    titleText.innerHTML = 'Hours & Location'
+    titleText.style.fontSize = '24px' 
+    titleText.style.color = 'white' 
+    titleText.style.fontFamily = 'CinzelSemiBold' 
+    titleText.style.textAlign = 'center' 
+
     
     
-    contactPage.appendChild(test_element)
+    const addressText = document.createElement('p')
+    addressText.innerHTML = '(In front of St. Paul) 4XJ7+P27, Cagayan Valley Rd, San Miguel, Bulacan'
+    addressText.style.fontSize = '12px' 
+    addressText.style.color = 'white' 
+    addressText.style.fontFamily = 'CinzelRegular' 
+    addressText.style.textAlign= 'center' 
+    const openHoursText = document.createElement('p')
+    openHoursText.innerHTML =  'Monday - Saturday : 7 AM to 6 PM'
+    openHoursText.style.fontSize = '12px' 
+    openHoursText.style.color = 'white' 
+    openHoursText.style.fontFamily = 'CinzelRegular' 
+    openHoursText.style.textAlign= 'center' 
+
+    // append text elements to wrapper
+    locationTextWrapper.appendChild(titleText)
+    locationTextWrapper.appendChild(addressText)
+    locationTextWrapper.appendChild(openHoursText)
+    
+
+    // wrapper right side for directions
+    const directionsTextWrapper = document.createElement('div');
+
+    const directionsSubText = document.createElement('p');
+    directionsSubText.innerHTML = 'We hope to see you soon! Click on the link below for directions.'
+    directionsSubText.style.fontSize = '12px' 
+    directionsSubText.style.color = 'white' 
+    directionsSubText.style.fontFamily = 'CinzelRegular' 
+    directionsSubText.style.textAlign = 'center'
+    
+    
+    
+    const directionsText = document.createElement('p');
+    directionsText.innerHTML = 'Directions'
+    
+    
+    directionsText.style.fontSize = '24px' 
+    directionsText.style.color = 'white' 
+    directionsText.style.fontFamily = 'CinzelSemiBold' 
+    directionsText.style.textAlign = 'center' 
+
+    const directionsLink = document.createElement('a') 
+    directionsLink.setAttribute('href','https://www.google.com/maps/place/4XJ7%2BP27,+Cagayan+Valley+Rd,+San+Miguel,+Bulacan/@15.1318222,120.9623845,20z/data=!4m14!1m7!3m6!1s0x33971c94073928c5:0x1020f43ada3fd3c3!2sSt.+Paul+University+at+San+Miguel!8m2!3d15.1315644!4d120.963131!16s%2Fg%2F125_hxmj5!3m5!1s0x33971cc025fd446b:0xfe383026c130e089!8m2!3d15.1317837!4d120.9625689!16s%2Fg%2F11thq8snkw?entry=ttu&g_ep=EgoyMDI0MDgyMS4wIKXMDSoASAFQAw%3D%3D')
+    const directionsLinkText = document.createElement('p')
+    directionsLinkText.innerHTML = 'Get Directions'
+    directionsLink.appendChild(directionsLinkText)
+    directionsLinkText.style.fontSize = '12px' 
+    directionsLinkText.style.color = 'white' 
+    directionsLinkText.style.fontFamily = 'CinzelRegular' 
+    directionsLinkText.style.textAlign = 'center' 
+    directionsLinkText.style.marginTop = '12px' 
+    directionsLinkText.style.textDecoration= 'underline' 
+    
+
+    
+    directionsTextWrapper.appendChild(directionsText);
+    directionsTextWrapper.appendChild(directionsSubText)
+    directionsTextWrapper.appendChild(directionsLink)
+
+    
+    
+    textMainWrapper.appendChild(locationTextWrapper)
+    textMainWrapper.appendChild(directionsTextWrapper);
+
+    // Create an iframe element
+    const iframeWrapper = document.createElement('div')
+    iframeWrapper.style.display = 'flex'
+    iframeWrapper.style.justifyContent = 'center'
+    iframeWrapper.style.alignContent = 'center'
+
+    const iframe = document.createElement('iframe');
+    iframeWrapper.appendChild(iframe)
+
+    // Set attributes for the iframe
+    iframe.src = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d470.43929001263524!2d120.96238448575282!3d15.13182218400265!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33971cc025fd446b%3A0xfe383026c130e089!2s4XJ7%2BP27%2C%20Cagayan%20Valley%20Rd%2C%20San%20Miguel%2C%20Bulacan!5e0!3m2!1sen!2sph!4v1724587576863!5m2!1sen!2sph";
+    iframe.width = "500";
+    iframe.height = "300";
+    iframe.style.border = "0";
+    iframe.style.borderRadius = "5px";
+    iframe.style.marginTop= "15px";
+    iframe.allowFullscreen = "";
+    iframe.loading = "lazy";
+    iframe.referrerPolicy = "no-referrer-when-downgrade";
+    
+    
+    contactContentContainer1.appendChild(textMainWrapper)
+    contactContentContainer1.appendChild(iframeWrapper)
+
+    contactPage.appendChild(contactContentContainer1)
+
     
     mainContent.appendChild(contactPage);
 }
@@ -412,7 +518,8 @@ const priceTag = (price) => {
     
     priceText.innerHTML = '₱ ' + price 
     priceText.style.color = "white";
-    priceText.style.fontSize = "10px";
+    priceText.style.fontSize = "12px";
+    priceText.style.padding = '0px 10px 0px 10px'
     priceText.style.fontFamily = "CinzelSemiBold";
 
     border.appendChild(priceText)
@@ -425,7 +532,7 @@ const priceTag = (price) => {
     
     mainWrapper.style.top = '10px'
     mainWrapper.style.right = '10px'
-    mainWrapper.style.boxShadow = 'rgba(0, 0, 0, 0.35) 0px 5px 15px'
+    // mainWrapper.style.boxShadow = '0px 10px -14px 14px #FFF'
 
 
     return mainWrapper
@@ -451,8 +558,9 @@ const menuPage = () => {
         const text = document.createElement('p');
         text.innerHTML = title 
         text.classList = 'siomai-menu-text'
-        text.style.fontFamily = 'CinzelBold'
+        text.style.fontFamily = 'CinzelSemiBold'
         text.style.textShadow = '2px 2px #ff0000;'
+        text.style.color = 'black'
         
         wrapper.appendChild(text)
         
@@ -538,7 +646,7 @@ const menuPage = () => {
     [[shanghaiSiomaiImg, 1, 47], [japaneseSiomaiImg, 1, 56], [hongkongSiomaiImg, 1, 50], [chickenSiomaiImg, 1, 47], 
         [asadoSiopaoImg, 2, 60], [bolaBolaSiopaoImg, 2, ], [chickenSiopaoImg, 2, ], [spicyAsadoSiopaoImg, 2], , [combiSiopaoImg, 2, ]].forEach(element => {
             
-        element[0].style.height = '150px'
+        element[0].style.height = '200px'
         element[0].style.borderRadius = '3px'
 
 
@@ -621,7 +729,7 @@ homePage()
 contactPage()
 menuPage()
 
-document.querySelector("#contact").classList.toggle('not-visible')
+document.querySelector("#menu").classList.toggle('not-visible')
 
 document.querySelector("#home").classList.toggle('not-visible')
 // MODIFY TO DISPLAY ON FIRST LOAD

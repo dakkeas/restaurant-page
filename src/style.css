@@ -179,6 +179,7 @@ img[alt*="close"]{
 
 #header {
     transition: filter 0.2s;
+    /* box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px; */
 }
 
 .home-bg-cont-2 {
@@ -295,6 +296,7 @@ img[alt*="close"]{
     flex-direction: row;
     /* background-color: maroon; */
     padding: 10px 20px 10px 20px;
+    /* box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; */
 }
 
 
@@ -517,9 +519,10 @@ a:hover {
 /* MENU */
 
 .menu-bg-cont-1 {
-    padding: 30px 20px 30px 20px;
+    padding: 30px 10px 30px 10px;
     background-image: url('./beige_pattern.jpg');
-    background-size: contain;
+    background-size:contain;
+    /* background-color: var(--maroon); */
     display: flex;
     flex-direction: column;
 
@@ -560,3 +563,16 @@ a:hover {
     /* transform: scale(1.02) ; */
     transition: 0.2s;
 }
+
+/* CONTACT */
+
+
+.contact-bg-cont-1 {
+    padding: 30px 20px 30px 20px;
+    /* background-image: url('./10.jpg'); */
+    /* background-size:contain; */
+    /* background-color: black; */
+    display: flex;
+    flex-direction: column;
+}
+
