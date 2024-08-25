@@ -729,9 +729,9 @@ homePage()
 contactPage()
 menuPage()
 
-document.querySelector("#menu").classList.toggle('not-visible')
+document.querySelector("#contact").classList.toggle('not-visible')
 
-document.querySelector("#home").classList.toggle('not-visible')
+document.querySelector("#menu").classList.toggle('not-visible')
 // MODIFY TO DISPLAY ON FIRST LOAD
 
 // document.querySelector("#home").classList.toggle('not-visible')
